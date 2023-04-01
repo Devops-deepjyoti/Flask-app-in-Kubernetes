@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: flaskkubernetes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flaskkubernetes
+  template:
+    metadata:
+      labels:
+        app: flaskkubernetes
+    spec:
+      containers:
+      - name: flaskkubernetes
+        image: deep1994/flask-hello
+        ports:
+        - containerPort: 80
+        env:
+        - name: FLASK_APP
+          value: app.py
